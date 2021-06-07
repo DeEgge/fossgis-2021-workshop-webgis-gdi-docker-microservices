@@ -342,7 +342,9 @@ services:
 docker-compose build
 
 # Container starten
-docker-compose -d up
+docker-compose up
+
+# Beobachtet den Konsolen-Output! Das Setup-Skript installiert Mapbender...
 ```
 
 ```
