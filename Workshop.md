@@ -63,7 +63,7 @@ Dockerfile für **Apache + mod_php** anlegen
 ```shell
 cd ~/workshop
 mkdir -p apache-mod-php
-code .
+code . # oder Ähnliches...
 ```
 
 [Welche Bibliotheken/PHP-Module/... müssen für Mapbender installiert werden?](https://doc.mapbender.org/de/installation/installation_ubuntu.html#vorbereitung)
@@ -143,7 +143,7 @@ cd apache-mod-php
 docker build -t mapbender_apache-mod-php .
 
 # Docker Container starten
-docker run -d --name mapbender_apache-mod-php -v ~/workshop/mapbender:/var/www/mapbender -p 8081:80 mapbender_apache-mod-php:latest
+docker run -d --name mapbender_apache-mod-php -p 8081:80 mapbender_apache-mod-php:latest
 
 # Ggfs. User- und Group-IDs an Host-User anpassen
 docker exec -t -e USER_ID=$(id -u) -e GROUP_ID=$(id -g) mapbender_apache-mod-php /bin/bash -c "usermod -u $USER_ID www-data && groupmod -g $GROUP_ID www-data"
