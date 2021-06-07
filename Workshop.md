@@ -204,19 +204,19 @@ FROM php:7.3-fpm
 ENV DEBIAN_FRONTEND noninteractive
 
 RUN apt-get update \
-    && apt-get install --no-install-recommends -y \
-        wget \
-        libzip-dev \
+	&& apt-get install --no-install-recommends -y \
+		wget \
+		libzip-dev \
 		libbz2-dev \
 		libwebp-dev \
 		libjpeg-dev \
 		libpng-dev \
 		libicu-dev \
-    && docker-php-ext-install zip \
+	&& docker-php-ext-install zip \
 	&& docker-php-ext-install bz2 \
 	&& docker-php-ext-install gd \
 	&& docker-php-ext-install intl \
-    && docker-php-ext-install opcache \
+	&& docker-php-ext-install opcache \
 	&& docker-php-ext-enable opcache
 
 ENV PHP_MEMORY_LIMIT=-1
