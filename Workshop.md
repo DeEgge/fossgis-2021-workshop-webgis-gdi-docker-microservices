@@ -145,6 +145,15 @@ docker run -d --name mapbender_apache-mod-php -v ~/workshop/mapbender:/var/www/m
 docker exec -t -e USER_ID=$(id -u) -e GROUP_ID=$(id -g) mapbender_apache-mod-php /bin/bash -c "usermod -u $USER_ID www-data && groupmod -g $GROUP_ID www-data"
 ```
 
+Ordnerstruktur
+
+```
+📦workshop
+ ┣ 📂apache-mod-php
+ ┃ ┣ 📜Dockerfile
+ ┃ ┗ 📜mapbender.conf
+```
+
 ## 3. Apache + php-fpm
 
 Trennen von statischem Webserver (Apache) und PHP-Prozessierung (php-fpm), mittels `docker-compose`
@@ -332,6 +341,21 @@ docker-compose build
 docker-compose -d up
 ```
 
+```
+📦workshop
+ ┣ 📂apache
+ ┃ ┣ 📜Dockerfile
+ ┃ ┗ 📜mapbender.conf
+ ┣ 📂mapbender_shared
+ ┃ ┗ 📜mapbender-setup.sh
+ ┣ 📂php
+ ┃ ┗ 📜Dockerfile
+ ┣ 📂volumes
+ ┃ ┣ mapbender
+ ┃ ┃ ┗ ... 
+ ┗ 📜docker-compose.yml
+```
+
 ## 4. Apache durch nginx austauschen
 
 Leichtes Ersetzen von Services (Microservice-Architektur) möglich.
@@ -416,6 +440,20 @@ server {
 # Apache-Container stoppen
 docker-compose stop apache
 docker-compose up -d nginx
+```
+
+```
+📦workshop
+ ┣ ❌#apache
+ ┃ ┣ ❌#Dockerfile
+ ┃ ┗ ❌#mapbender.conf
+ ┣ 📂mapbender_shared
+ ┃ ┣ 📜mapbender-setup.sh
+ ┣ 📂nginx
+ ┃ ┗ 📜mapbender.conf
+ ┣ 📂php
+ ┃ ┗ 📜Dockerfile
+ ┗ 📜docker-compose.yml
 ```
 
 ### 4.1 Persistente Daten in Container einbinden
@@ -628,6 +666,22 @@ docker-compose up -d
 docker-compose exec php php /var/www/mapbender/app/console cache:clear --env=prod 
 ```
 
+```
+📦workshop
+ ┣ 📂mapbender_shared
+ ┃ ┣ 📜FOSSGIS_Demo.yml
+ ┃ ┣ 📜FOSSGIS_Logo_2021.png
+ ┃ ┣ 📜mapbender-setup.sh
+ ┣ 📂nginx
+ ┃ ┗ 📜mapbender.conf
+ ┣ 📂php
+ ┃ ┗ 📜Dockerfile
+ ┣ 📂volumes
+ ┃ ┣ mapbender
+ ┃ ┃ ┗ ... 
+ ┗ 📜docker-compose.yml
+```
+
 ## 5. Container für Postgres/PostGIS-DB
 
 Kann ebenfalls ohne separates Dockerfile direkt als Image eingebunden werden.
@@ -788,6 +842,25 @@ docker-compose exec php php /var/www/mapbender/app/console cache:clear --env=pro
 Datenbankinitialisierung in Skript auslagern
 
 https://github.com/docker-library/docs/tree/master/postgres#initialization-scripts
+
+```
+📦workshop
+ ┣ 📂mapbender_shared
+ ┃ ┣ 📜FOSSGIS_Demo.yml
+ ┃ ┣ 📜FOSSGIS_Logo_2021.png
+ ┃ ┣ 📜mapbender-setup.sh
+ ┃ ┗ 📜parameters.yml
+ ┣ 📂nginx
+ ┃ ┗ 📜mapbender.conf
+ ┣ 📂php
+ ┃ ┗ 📜Dockerfile
+ ┣ 📂volumes
+ ┃ ┣ 📂postgresql
+ ┃ ┃ ┗ ... 
+ ┃ ┣ mapbender
+ ┃ ┃ ┗ ... 
+ ┗ 📜docker-compose.yml
+```
 
 ## 6. Mapserver
 
@@ -1460,6 +1533,29 @@ Cache löschen nicht vergessen
 docker-compose exec php php /var/www/mapbender/app/console cache:clear --env=prod 
 ```
 
+```
+📦workshop
+ ┣ 📂mapbender_shared
+ ┃ ┣ 📜FOSSGIS_Demo.yml
+ ┃ ┣ 📜FOSSGIS_Logo_2021.png
+ ┃ ┣ 📜mapbender-setup.sh
+ ┃ ┗ 📜parameters.yml
+ ┣ 📂mapserver
+ ┃ ┗ 📂data
+ ┃ ┃ ┣ 📜bar_cafe.geojson
+ ┃ ┃ ┗ 📜bar_cafe.map
+ ┣ 📂nginx
+ ┃ ┗ 📜mapbender.conf
+ ┣ 📂php
+ ┃ ┗ 📜Dockerfile
+ ┣ 📂volumes
+ ┃ ┣ 📂postgresql
+ ┃ ┃ ┗ ... 
+ ┃ ┣ mapbender
+ ┃ ┃ ┗ ... 
+ ┗ 📜docker-compose.yml
+```
+
 ## 7. Redis Session Handler
 
 PHP-Erweiterung für Redis installieren.
@@ -1613,4 +1709,35 @@ services:
     image: redis:alpine
     
 
+```
+
+Ordnerstruktur
+
+```
+📦workshop
+ ┣ 📂apache
+ ┃ ┣ 📜Dockerfile
+ ┃ ┗ 📜mapbender.conf
+ ┣ 📂apache-mod-php
+ ┃ ┣ 📜Dockerfile
+ ┃ ┗ 📜mapbender.conf
+ ┣ 📂mapbender_shared
+ ┃ ┣ 📜FOSSGIS_Demo.yml
+ ┃ ┣ 📜FOSSGIS_Logo_2021.png
+ ┃ ┣ 📜mapbender-setup.sh
+ ┃ ┗ 📜parameters.yml
+ ┣ 📂mapserver
+ ┃ ┗ 📂data
+ ┃ ┃ ┣ 📜bar_cafe.geojson
+ ┃ ┃ ┗ 📜bar_cafe.map
+ ┣ 📂nginx
+ ┃ ┗ 📜mapbender.conf
+ ┣ 📂php
+ ┃ ┗ 📜Dockerfile
+ ┣ 📂volumes
+ ┃ ┣ 📂postgresql
+ ┃ ┃ ┗ ... 
+ ┃ ┣ mapbender
+ ┃ ┃ ┗ ... 
+ ┗ 📜docker-compose.yml
 ```
