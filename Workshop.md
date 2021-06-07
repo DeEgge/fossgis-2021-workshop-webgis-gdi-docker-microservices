@@ -205,6 +205,7 @@ ENV DEBIAN_FRONTEND noninteractive
 
 RUN apt-get update \
     && apt-get install --no-install-recommends -y \
+        wget \
         libzip-dev \
 		libbz2-dev \
 		libwebp-dev \
