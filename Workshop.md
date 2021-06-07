@@ -40,6 +40,8 @@
 
 * Docker? Microservices? Docker Microservices?
 * Was wir machen wollen...
+* [Docker Cheat Sheet](https://dockerlabs.collabnix.com/docker/cheatsheet/)
+* [Docker-Compose Cheat Sheet](https://devhints.io/docker-compose)
 
 <!-- ### 1.1 Vorbereitung
 
@@ -64,10 +66,12 @@ mkdir -p apache-mod-php
 code .
 ```
 
+[Welche Bibliotheken/PHP-Module/... müssen für Mapbender installiert werden?](https://doc.mapbender.org/de/installation/installation_ubuntu.html#vorbereitung)
+
 <details>
 <summary>
 
-`apache-mod-php/Dockerfile` [Erweiterungen, die zu installieren sind](https://doc.mapbender.org/de/installation/installation_ubuntu.html#vorbereitung)
+`apache-mod-php/Dockerfile`
 
 </summary>
 
@@ -145,7 +149,7 @@ docker run -d --name mapbender_apache-mod-php -v ~/workshop/mapbender:/var/www/m
 docker exec -t -e USER_ID=$(id -u) -e GROUP_ID=$(id -g) mapbender_apache-mod-php /bin/bash -c "usermod -u $USER_ID www-data && groupmod -g $GROUP_ID www-data"
 ```
 
-Ordnerstruktur
+Aktuelle Ordnerstruktur
 
 ```
 📦workshop
@@ -253,7 +257,7 @@ Alias / /var/www/mapbender/web/
 
 </details>
 
-Wir benötigen ein simples Skript, dass Mapbender herunterlädt. Den Inhalt des Verzeichnisses `/var/www/` binden wir als Volume ein, sodass beim Aufruf des Skript der Ordner befüllt wird.
+Wir benötigen ein simples Skript, dass Mapbender herunterlädt. Den Inhalt des Verzeichnisses `/var/www/` binden wir als Volume ein, sodass beim Aufruf des Skripts der Ordner befüllt wird.
 
 ```shell
 # Ordner für persistente Daten anlegen
