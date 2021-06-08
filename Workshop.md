@@ -1594,6 +1594,9 @@ RUN pecl install -o -f redis \
 ```shell
 # PHP-Container neu bauen
 docker-compose build php
+
+# PHP-Container neu starten
+docker-compose restart php
 ```
 
 `docker-compose.yml`
