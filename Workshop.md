@@ -673,7 +673,7 @@ php:
 docker-compose up -d
 
 # Befehl im Service php ausführen
-docker-compose exec php php /var/www/mapbender/app/console cache:clear --env=prod 
+docker-compose exec --user www-data php php /var/www/mapbender/app/console cache:clear --env=prod 
 ```
 
 ```
@@ -820,6 +820,9 @@ services:
 </details>
 
 ```shell
+# PostgreSQL starten
+docker-compose up -d postgis
+
 # Ggfs. User-ID und Group-ID an Hostuser anpassen
 docker-compose exec -e USER_ID=$(id -u) -e GROUP_ID=$(id -g) postgis /bin/bash -c "usermod -u $USER_ID postgres && groupmod -g $GROUP_ID postgres"
 
@@ -841,10 +844,10 @@ GRANT ALL PRIVILEGES ON DATABASE mapbender TO mb_db_user;
 Mapbender-DB einrichten [Quelle](https://doc.mapbender.org/de/installation/installation_ubuntu.html#optional)
 
 ```shell
-docker-compose exec php php /var/www/mapbender/app/console doctrine:schema:create
-docker-compose exec php php /var/www/mapbender/app/console mapbender:database:init -v
-docker-compose exec php php /var/www/mapbender/app/console fom:user:resetroot
-docker-compose exec php php /var/www/mapbender/app/console cache:clear --env=prod
+docker-compose exec --user www-data php php /var/www/mapbender/app/console doctrine:schema:create
+docker-compose exec --user www-data php php /var/www/mapbender/app/console mapbender:database:init -v
+docker-compose exec --user www-data php php /var/www/mapbender/app/console fom:user:resetroot
+docker-compose exec --user www-data php php /var/www/mapbender/app/console cache:clear --env=prod
 ```
 
 **Optional**
