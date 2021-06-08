@@ -1542,12 +1542,17 @@ parameters:
 
 </details>
 
+```shell
+# Mapserver starten
+docker-compose up -d mapserver
+```
+
 [Demo-Request](http://localhost:8585/?request=getcapabilities&service=wms&_signature=21%3AwjgfXKjcj4_SAg_98raFHv9bhrI&SERVICE=WMS&VERSION=1.3.0&REQUEST=GetMap&FORMAT=image%2Fpng&TRANSPARENT=true&LAYERS=bar_cafe&STYLES=&_OLSALT=0.08847621550740303&CRS=EPSG%3A4326&WIDTH=2161&HEIGHT=495&BBOX=47.209380851277636%2C8.762149736270743%2C47.24050753812575%2C8.898038161076354)
 
-Cache löschen nicht vergessen
+Cache löschen nicht vergessen!
 
 ```shell
-docker-compose exec php php /var/www/mapbender/app/console cache:clear --env=prod 
+docker-compose exec --user www-data php php /var/www/mapbender/app/console cache:clear --env=prod 
 ```
 
 ```
