@@ -339,6 +339,9 @@ services:
 </details>
 
 ```shell
+# Skript ausführbar machen
+chmod +x ~/workshop/mapbender_shared/mapbender-setup.sh
+
 # Container bauen
 docker-compose build
 
