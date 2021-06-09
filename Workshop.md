@@ -663,7 +663,6 @@ php:
       - ./volumes/www/:/var/www
       - ./mapbender_shared/mapbender-setup.sh:/tmp/mapbender-setup:ro
       - ./mapbender_shared/FOSSGIS_Demo.yml:/var/www/mapbender/app/config/applications/FOSSGIS_Demo.yml
-      - ./mapebder_shared/FOSSGIS_LOGO_2021.png:/var/www/mapbender/web/uploads/FOSSGIS_Demo_yml/screenshot.png
 ...
 ```
 
@@ -681,7 +680,6 @@ docker-compose exec --user www-data php php /var/www/mapbender/app/console cache
 📦workshop
  ┣ 📂mapbender_shared
  ┃ ┣ 📜FOSSGIS_Demo.yml
- ┃ ┣ 📜FOSSGIS_Logo_2021.png
  ┃ ┣ 📜mapbender-setup.sh
  ┣ 📂nginx
  ┃ ┗ 📜mapbender.conf
@@ -865,7 +863,6 @@ https://github.com/docker-library/docs/tree/master/postgres#initialization-scrip
 📦workshop
  ┣ 📂mapbender_shared
  ┃ ┣ 📜FOSSGIS_Demo.yml
- ┃ ┣ 📜FOSSGIS_Logo_2021.png
  ┃ ┣ 📜mapbender-setup.sh
  ┃ ┗ 📜parameters.yml
  ┣ 📂nginx
@@ -1560,7 +1557,6 @@ docker-compose exec --user www-data php php /var/www/mapbender/app/console cache
 📦workshop
  ┣ 📂mapbender_shared
  ┃ ┣ 📜FOSSGIS_Demo.yml
- ┃ ┣ 📜FOSSGIS_Logo_2021.png
  ┃ ┣ 📜mapbender-setup.sh
  ┃ ┗ 📜parameters.yml
  ┣ 📂mapserver
@@ -1690,7 +1686,6 @@ services:
       - ./volumes/www/:/var/www
       - ./mapbender_shared/mapbender-setup.sh:/tmp/mapbender-setup:ro
       - ./mapbender_shared/FOSSGIS_Demo.yml:/var/www/mapbender/app/config/applications/FOSSGIS_Demo.yml
-    #   - ./mapbender_shared/FOSSGIS_Logo_2021.png:/var/www/mapbender/web/uploads/fossgis_demo/screenshot.png
       - ./mapbender_shared/parameters.yml:/var/www/mapbender/app/config/parameters.yml
     command: bash -c "/tmp/mapbender-setup && docker-php-entrypoint php-fpm"
     environment:
@@ -1749,7 +1744,6 @@ Ordnerstruktur
  ┃ ┗ 📜mapbender.conf
  ┣ 📂mapbender_shared
  ┃ ┣ 📜FOSSGIS_Demo.yml
- ┃ ┣ 📜FOSSGIS_Logo_2021.png
  ┃ ┣ 📜mapbender-setup.sh
  ┃ ┗ 📜parameters.yml
  ┣ 📂mapserver
