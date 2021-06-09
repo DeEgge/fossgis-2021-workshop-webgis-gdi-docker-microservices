@@ -708,17 +708,6 @@ RUN apt-get install --no-install-recommends -y \
 ...
 ```
 
-```shell
-# PHP-Container stoppen
-docker-compose stop php
-
-# PHP-Container neu bauen
-docker-compose build php
-
-# PHP-Container wieder starten
-docker-compose up -d php
-```
-
 Datenbank-Parameter für Mapbender mitgeben, in Form von `parameters.yml`
 
 <details>
@@ -823,6 +812,15 @@ services:
 </details>
 
 ```shell
+# PHP-Container stoppen
+docker-compose stop php
+
+# PHP-Container neu bauen
+docker-compose build php
+
+# PHP-Container wieder starten
+docker-compose up -d php
+
 # PostgreSQL starten
 docker-compose up -d postgis
 
