@@ -346,9 +346,10 @@ chmod +x ~/workshop/mapbender_shared/mapbender-setup.sh
 docker-compose build
 
 # Container starten
-docker-compose up
+docker-compose up -d
 
 # Beobachtet den Konsolen-Output! Das Setup-Skript installiert Mapbender...
+docker-compose logs -f -t
 ```
 
 ```
@@ -1591,14 +1592,6 @@ RUN pecl install -o -f redis \
 ...
 ```
 
-```shell
-# PHP-Container neu bauen
-docker-compose build php
-
-# PHP-Container neu starten
-docker-compose restart php
-```
-
 `docker-compose.yml`
 
 ```yml
@@ -1661,9 +1654,17 @@ framework:
         handler_id: session_handler_redis
 ```
 
-Cache löschen nicht vergessen
-
 ```shell
+# PHP-Container neu bauen
+docker-compose build php
+
+# PHP-Container neu starten
+docker-compose restart php
+
+# Redis starten
+docker-compose up -d redis
+
+# Cache löschen nicht vergessen!
 docker-compose exec php php /var/www/mapbender/app/console cache:clear --env=prod 
 ```
 
