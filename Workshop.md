@@ -15,8 +15,9 @@
   - [Christian Kuntzsch](#christian-kuntzsch)
 - [Workshop](#workshop)
   - [1. Einleitung](#1-einleitung)
-  - [2. Apache + mod_php](#2-apache-mod_php)
-  - [3. Apache + php-fpm](#3-apache-php-fpm)
+    - [1.1 Vorbereitung](#11-vorbereitung)
+  - [2. Apache + mod_php](#2-apache--mod_php)
+  - [3. Apache + php-fpm](#3-apache--php-fpm)
   - [4. Apache durch nginx austauschen](#4-apache-durch-nginx-austauschen)
     - [4.1 Persistente Daten in Container einbinden](#41-persistente-daten-in-container-einbinden)
   - [5. Container für Postgres/PostGIS-DB](#5-container-für-postgrespostgis-db)
@@ -44,16 +45,13 @@
 * [Docker Cheat Sheet](https://dockerlabs.collabnix.com/docker/cheatsheet/)
 * [Docker-Compose Cheat Sheet](https://devhints.io/docker-compose)
 
-<!-- ### 1.1 Vorbereitung
+### 1.1 Vorbereitung
 
-Aktuelles Mapbender-Release herunterladen
+Wir benötigen einen Ordner zum Arbeiten
 
 ```shell
 mkdir -p ~/workshop
-wget https://mapbender.org/builds/mapbender-starter-current.tar.gz -O ~/workshop/mapbender-starter-current.tar.gz
-tar -zxf ~/workshop/mapbender-starter-current.tar.gz -C ~/workshop
-mv $(ls -d ~/workshop/*/ | grep mapbender) ~/workshop/mapbender/
-``` -->
+```
 
 ## 2. Apache + mod_php
 
